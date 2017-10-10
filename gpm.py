@@ -4,6 +4,8 @@ from getpass import getpass
 import os
 from gmusicapi import Mobileclient
 import urllib.request
+import commands as cmd
+
 
 USER_ENV = "GPM_GOOGLE_USER"
 PASS_ENV = "GPM_GOOGLE_PASS"
@@ -49,7 +51,8 @@ def run(api, query):
 
     for t in tracks:
         print(disp(t))
-        # url = api.get_stream_url(t['storeId'])
+        url = api.get_stream_url(t['storeId'])
+        cmd.callPlay(url)
         # fileDownload(url, t["title"]+".mp3")
     print("ok")
 
